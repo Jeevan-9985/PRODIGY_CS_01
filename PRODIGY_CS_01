@@ -1,0 +1,30 @@
+"""Author - Jeevan , time : 21-00, ddmmyy : 030724"""
+def caesar_cipher(text, shift, mode):
+    result = ""
+    for char in text:
+        if char.isalpha():
+            base = ord('a') if char.islower() else ord('A')
+            shifted_char = chr((ord(char) - base + shift) % 26 + base)
+            result += shifted_char
+        else:
+            result += char
+    return result
+
+def main():
+    user_text = input("Enter the text: ")
+    shift_value = int(input("Enter the shift value (positive for encryption, negative('-') for decryption): "))
+    
+    operation = input("Enter 'encrypt' or 'decrypt': ").lower()
+    
+    if operation == 'encrypt':
+        encrypted_text = caesar_cipher(user_text, shift_value, 'encrypt')
+        print(f"Encrypted text: {encrypted_text}")
+    elif operation == 'decrypt':
+        decrypted_text = caesar_cipher(user_text, shift_value, 'decrypt')
+        print(f"Decrypted text: {decrypted_text}")
+    else:
+        print("Invalid option.🙏 Please enter 'encrypt' or 'decrypt'.")
+
+if __name__ == "__main__":
+    main()
+
